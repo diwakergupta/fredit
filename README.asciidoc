@@ -1,0 +1,2 @@
+Fredit: A Fresh Editor
+======================
