@@ -1,2 +1,20 @@
 Fredit: A Fresh Editor
 ======================
+
+Rationale
+---------
+
+I am starting Fredit because I like Vim, but the Vim code is not very friendly.
+Emacs has a more active community, but Emacs is just too bloated.
+
+Yzis was going in the right direction, but the project is dead now.
+
+Plan
+----
+
+- start with the Yzis code base. Retain the core ideas and architecture.
+- Use GNU source highlight for syntax highlighting.
+- Use Lua for scripting and configuration.
+- Use Waf as the build system.
+- Use Google style guide for C++.
+- License everything under GPL2 for now.
