@@ -5,9 +5,14 @@ Rationale
 ---------
 
 I am starting Fredit because I like Vim, but the Vim code is not very friendly.
-Emacs has a more active community, but Emacs is just too bloated.
+Emacs has a more active community, but Emacs is just too bloated. More
+importantly, neither Vim or Emacs have what I believe the right architecture for
+a text editor. I also find it shocking that the core code and architecture of
+these two editors have not changed in almost two decades now. I don't know about
+you, but I personally am ready for a change -- a new editor with a better
+design and potential to fully exploit contemporary hardware and software.
 
-Yzis was going in the right direction, but the project is dead now.
+Yzis was going in the right direction, but that project is dead now.
 
 Plan
 ----
@@ -18,3 +23,14 @@ Plan
 - Use Waf as the build system.
 - Use Google style guide for C++.
 - License everything under GPL2 for now.
+- Use Google gflags for command line parsing.
+- Use Google glog for logging.
+
+Requirements
+------------
+
+- google gflags
+- google glog
+- qt4
+- ncurses
+- GNU source highlight
