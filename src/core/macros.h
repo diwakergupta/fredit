@@ -1,5 +1,5 @@
 // Fredit: A fresh editor.
-//
+
 // Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
 
 // This program is free software; you can redistribute it and/or
@@ -16,24 +16,14 @@
 // this program; if not, write to the Free Software Foundation, Inc., 51
 // Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "cursor.h"
+#ifndef FRED_CORE_MACROS_H_
+#define FRED_CORE_MACROS_H_
 
-namespace fred { namespace core {
+// A macro to disallow the copy constructor and operator= functions
+// This should be used in the private: declarations for a class
+// Courtesy: Google style guide.
+#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+  TypeName(const TypeName&);               \
+  void operator=(const TypeName&)
 
-bool Cursor::operator<(const Cursor& right) const {
-  return (y() < right.y()) || (y() == right.y() && x() < right.x());
-}
-
-bool Cursor::operator<=(const Cursor& right) const {
-  return (*this == right) || (*this < right);
-}
-
-bool Cursor::operator>(const Cursor& right) const {
-  return (*this != right) && (!(*this < right));
-}
-
-bool Cursor::operator>=(const Cursor& right) const {
-  return right <= *this;
-}
-
-} } // end namespace
+#endif // end of include guard: FRED_CORE_MACROS_H_

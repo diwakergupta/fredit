@@ -1,4 +1,5 @@
-# This file is part of the fredit core library.
+# Fredit: A fresh editor.
+#
 # Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
 
 # This program is free software; you can redistribute it and/or
@@ -19,8 +20,8 @@ def build(bld):
   # the functional syntax is equivalent to the object-oriented one
   obj = bld.new_task_gen(
     features=["qt4", "cprogram", "cxx", "cshlib"],
-    uselib = "QTCORE",
-    target = "libfred",
+    uselib = "QTCORE GLOG",
+    target = "fred",
     includes = ".",
   )
 

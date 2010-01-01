@@ -1,4 +1,5 @@
-// This file is part of the fredit core library.
+// Fredit: A fresh editor.
+//
 // Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
 
 // This program is free software; you can redistribute it and/or

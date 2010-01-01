@@ -1,5 +1,5 @@
 // Fredit: A fresh editor.
-//
+
 // Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
 
 // This program is free software; you can redistribute it and/or
@@ -13,27 +13,23 @@
 // GNU General Public License for more details.
 
 // You should have received a copy of the GNU General Public License along with
-// this program; if not, write to the Free Software Foundation, Inc., 51
-// Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+// this program; if not, write to the Free Software Foundation, Inc.,
+// 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "cursor.h"
+#include "registers.h"
+
+#include <glog/logging.h>
 
 namespace fred { namespace core {
 
-bool Cursor::operator<(const Cursor& right) const {
-  return (y() < right.y()) || (y() == right.y() && x() < right.x());
+void Registers::SetRegister(QChar reg_chr, const QStringList& value) {
+  registers_[reg_chr] = value;
+  DLOG(INFO) << "Setting register[" << reg_chr.toAscii() << "] = "
+             << value.join(", ").toStdString();
 }
 
-bool Cursor::operator<=(const Cursor& right) const {
-  return (*this == right) || (*this < right);
+QStringList& Registers::GetRegister(QChar reg_chr) {
+  return registers_[reg_chr];
 }
 
-bool Cursor::operator>(const Cursor& right) const {
-  return (*this != right) && (!(*this < right));
-}
-
-bool Cursor::operator>=(const Cursor& right) const {
-  return right <= *this;
-}
-
-} } // end namespace
+} } // end namespace.

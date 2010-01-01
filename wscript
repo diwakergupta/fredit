@@ -1,4 +1,5 @@
-# This file is part of fredit: a fresh editor.
+# Fredit: A fresh editor.
+#
 # Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
 
 # This program is free software; you can redistribute it and/or
@@ -22,9 +23,7 @@ def set_options(opt):
   opt.tool_options("qt4")
 
 def configure(conf):
-  conf.check_tool("g++")
-  conf.check_tool("qt4")
-  conf.env.append_value("CXXFLAGS", "-g -DQT_CORE_LIB -DQT_SHARED".split())
+  conf.add_subdirs("src")
 
 def build(bld):
   bld.add_subdirs("src")
