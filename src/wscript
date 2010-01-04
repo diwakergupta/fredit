@@ -16,6 +16,9 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
+def set_options(opt):
+  opt.tool_options("qt4")
+
 def configure(conf):
   conf.check_tool("g++")
   conf.check_tool("qt4")
@@ -26,5 +29,10 @@ def configure(conf):
   conf.env.LIBPATH_GLOG = "/usr/lib"
   conf.env.CPPPATH_GLOG = "/usr/include"
 
+  # Configuration for google-gflags.
+  conf.env.LIB_GFLAGS = "gflags"
+  conf.env.LIBPATH_GFLAGS = "/usr/lib"
+  conf.env.CPPPATH_GFLAGS = "/usr/include"
+
 def build(bld):
-  bld.add_subdirs("core")
+  bld.add_subdirs("core core-runner nfred")
