@@ -23,7 +23,6 @@ def build(bld):
     uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE"],
     target = "fred",
     includes = ".",
-    export_incdirs = "."
-  )
+    export_incdirs = ".")
 
-  obj.find_sources_in_dirs('.')
+  obj.find_sources_in_dirs(".")
