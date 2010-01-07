@@ -19,7 +19,7 @@
 def build(bld):
   obj = bld.new_task_gen(
     features = ["qt4", "cxx", "cprogram"],
-    uselib = ["QTCORE", "GLOG", "GFLAGS"],
+    uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE"],
     uselib_local = "fred",
     target = "core-runner",
     includes = [".", "../core"]

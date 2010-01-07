@@ -34,5 +34,10 @@ def configure(conf):
   conf.env.LIBPATH_GFLAGS = "/usr/lib"
   conf.env.CPPPATH_GFLAGS = "/usr/include"
 
+  # Configuration for Lua.
+  conf.env.LIB_LUA = "lua5.1"
+  conf.env.LIBPATH_LUA = "/usr/lib"
+  conf.env.CPPPATH_LUA = "/usr/include/lua5.1"
+
 def build(bld):
   bld.add_subdirs("core core-runner nfred")
