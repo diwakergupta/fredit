@@ -21,6 +21,9 @@
 
 #include <QCoreApplication>
 
+// namespace nfred = fred::nfred;
+// namespace core = fred::core;
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   google::AllowCommandLineReparsing();

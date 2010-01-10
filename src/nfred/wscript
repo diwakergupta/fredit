@@ -22,6 +22,6 @@ def build(bld):
     uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE"],
     uselib_local = "fred",
     target = "nfred",
-    includes = [".", "../core"])
+    includes = [".."])
 
   obj.find_sources_in_dirs(".")

@@ -19,10 +19,9 @@
 def build(bld):
   # the functional syntax is equivalent to the object-oriented one
   obj = bld.new_task_gen(
-    features=["qt4", "cxx", "cshlib"],
+    features=["qt4", "cxx", "cstaticlib"],
     uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE"],
     target = "fred",
-    includes = ".",
-    export_incdirs = ".")
+    includes = [".."])
 
   obj.find_sources_in_dirs(".")

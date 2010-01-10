@@ -19,11 +19,11 @@
 #ifndef FRED_CORE_SESSION_H_
 #define FRED_CORE_SESSION_H_
 
-#include "session-interface.h"
+#include "core/session-interface.h"
 
 #include <QList>
 
-#include "macros.h"
+#include "core/macros.h"
 
 namespace fred { namespace core {
 

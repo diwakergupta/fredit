@@ -19,7 +19,7 @@
 #ifndef FRED_CORE_VIEW_H_
 #define FRED_CORE_VIEW_H_
 
-#include "view-interface.h"
+#include "core/view-interface.h"
 
 namespace fred { namespace core {
 

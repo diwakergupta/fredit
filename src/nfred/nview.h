@@ -1,6 +1,6 @@
 // Fredit: A fresh editor.
 
-// Copyright (C) 2009 Diwaker Gupta <diwaker@floatingsun.net>
+// Copyright (C) 2010 Diwaker Gupta <diwaker@floatingsun.net>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,20 +16,29 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "core/registers.h"
+#ifndef FRED_NFRED_NVIEW_H_
+#define FRED_NFRED_NVIEW_H_
 
-#include <glog/logging.h>
+#include <ncurses.h>
 
-namespace fred { namespace core {
+#include "core/view.h"
 
-void Registers::SetRegister(QChar reg_chr, const QStringList& value) {
-  registers_[reg_chr] = value;
-  DLOG(INFO) << "Setting register[" << reg_chr.toAscii() << "] = "
-             << value.join(", ").toStdString();
+namespace fred { 
+
+namespace core {
+class Buffer;
 }
 
-QStringList& Registers::GetRegister(QChar reg_chr) {
-  return registers_[reg_chr];
-}
+namespace nfred {
+// Forward declarations.
+class NSession;
+
+class NView : public core::View {
+ public:
+  NView(core::Buffer* buffer);
+  virtual ~NView();
+};
 
 } } // end namespace.
+
+#endif // end of include guard: FRED_NFRED_NVIEW_H_
