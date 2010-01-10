@@ -19,7 +19,13 @@
 #ifndef FRED_CORE_BUFFER_H_
 #define FRED_CORE_BUFFER_H_
 
+#include <QList>
+#include <QString>
+
 namespace fred { namespace core {
+
+// Forward declarations.
+class View;
 
 // A Buffer is an in-memory representation of the contents of a file. Note that
 // the Buffer is only responsible for the content, and not the presentation --
@@ -31,6 +37,26 @@ class Buffer {
  public:
   Buffer();
   virtual ~Buffer();
+
+  // ===========================================================================
+  void LoadFile(const QString& filename);
+
+  // ===========================================================================
+  void AddView(View* view);
+
+  // ===========================================================================
+  enum BufferState {
+    BufferActive,
+    BufferHidden,
+    BufferInactive
+  };
+
+ private:
+  struct BufferInfo {
+    BufferInfo() {}
+    QList<View*> views;
+  };
+  BufferInfo* buf_info_;
 };
 
 } } // end namespace.

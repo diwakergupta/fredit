@@ -17,12 +17,19 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 #include <glog/logging.h>
-#include <glog/logging.h>
+#include <gflags/gflags.h>
+
+#include <QCoreApplication>
 
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   google::AllowCommandLineReparsing();
   google::ParseCommandLineFlags(&argc, &argv, true);
 
-  return 0;
+  QCoreApplication* app = new QCoreApplication(argc, argv);
+  app->setOrganizationName("fred");
+  app->setOrganizationDomain("fredit.org");
+  app->setApplicationName("nfred");
+
+  return app->exec();
 }

@@ -16,60 +16,29 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_FREDIT_H_
-#define FRED_CORE_FREDIT_H_
+#include "session.h"
 
-// Main include file for Fredit core.
+#include <glog/logging.h>
 
-namespace fredit { namespace core {
+namespace fred { namespace core {
 
-enum OptionScope {
-  kDefaultScope,
-  kGlobalScope,
-  kLocalScope
-};
+Session* Session::instance_ = NULL;
 
-enum OptionContext {
-  kNoneContext,
-  kSessionContext,
-  kBufferContext,
-  kViewContext
-};
+Session::Session() {
+}
 
-enum OptionType {
-  kInvalidType,
-  kIntType,
-  kStringType,
-  kListType,
-  kBoolType,
-  kMapType,
-  kColorType
-};
+Session::~Session() {
+}
 
-enum MappingMode {
-  kNormalMode,
-  kCmdLineMode,
-  kVisualMode,
-  kPendingOpMode,
-  kInsertMode,
-};
+Session* Session::GetInstance() {
+  if (!instance_) {
+    LOG(ERROR) << "GetInstance has not been called.";
+  }
+  return instance_;
+}
 
-enum SelectionType {
-  kAnySelection,
-  kSearchSelection,
-  kVisualSelection
-};
-
-enum IntervalType {
-  kBufferInterval,
-  kScreenInterval
-};
-
-enum ClipboardMode {
-  kClipboardMode,
-  kSelectionMode
-};
+void Session::SetInstance(Session* instance) {
+  instance_ = instance;
+}
 
 } } // end namespace.
-
-#endif // end of include guard: FRED_CORE_FREDIT_H_

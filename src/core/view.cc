@@ -16,60 +16,20 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_FREDIT_H_
-#define FRED_CORE_FREDIT_H_
+#include "view.h"
 
-// Main include file for Fredit core.
+// fred includes.
+#include "buffer.h"
+#include "session.h"
 
-namespace fredit { namespace core {
+namespace fred { namespace core {
 
-enum OptionScope {
-  kDefaultScope,
-  kGlobalScope,
-  kLocalScope
-};
+View::View(Buffer* buffer, Session* session)
+    : buffer_(buffer),
+      session_(session){
+}
 
-enum OptionContext {
-  kNoneContext,
-  kSessionContext,
-  kBufferContext,
-  kViewContext
-};
-
-enum OptionType {
-  kInvalidType,
-  kIntType,
-  kStringType,
-  kListType,
-  kBoolType,
-  kMapType,
-  kColorType
-};
-
-enum MappingMode {
-  kNormalMode,
-  kCmdLineMode,
-  kVisualMode,
-  kPendingOpMode,
-  kInsertMode,
-};
-
-enum SelectionType {
-  kAnySelection,
-  kSearchSelection,
-  kVisualSelection
-};
-
-enum IntervalType {
-  kBufferInterval,
-  kScreenInterval
-};
-
-enum ClipboardMode {
-  kClipboardMode,
-  kSelectionMode
-};
+View::~View() {
+}
 
 } } // end namespace.
-
-#endif // end of include guard: FRED_CORE_FREDIT_H_

@@ -16,60 +16,16 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_FREDIT_H_
-#define FRED_CORE_FREDIT_H_
+#ifndef FRED_CORE_SESSION_INTERFACE_H_
+#define FRED_CORE_SESSION_INTERFACE_H_
 
-// Main include file for Fredit core.
+namespace fred { namespace core {
 
-namespace fredit { namespace core {
-
-enum OptionScope {
-  kDefaultScope,
-  kGlobalScope,
-  kLocalScope
-};
-
-enum OptionContext {
-  kNoneContext,
-  kSessionContext,
-  kBufferContext,
-  kViewContext
-};
-
-enum OptionType {
-  kInvalidType,
-  kIntType,
-  kStringType,
-  kListType,
-  kBoolType,
-  kMapType,
-  kColorType
-};
-
-enum MappingMode {
-  kNormalMode,
-  kCmdLineMode,
-  kVisualMode,
-  kPendingOpMode,
-  kInsertMode,
-};
-
-enum SelectionType {
-  kAnySelection,
-  kSearchSelection,
-  kVisualSelection
-};
-
-enum IntervalType {
-  kBufferInterval,
-  kScreenInterval
-};
-
-enum ClipboardMode {
-  kClipboardMode,
-  kSelectionMode
+class SessionInterface {
+ public:
+  virtual ~SessionInterface() {}
 };
 
 } } // end namespace.
 
-#endif // end of include guard: FRED_CORE_FREDIT_H_
+#endif // end of include guard: FRED_CORE_SESSION_INTERFACE_H_

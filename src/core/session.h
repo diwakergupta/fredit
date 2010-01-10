@@ -16,60 +16,42 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_FREDIT_H_
-#define FRED_CORE_FREDIT_H_
+#ifndef FRED_CORE_SESSION_H_
+#define FRED_CORE_SESSION_H_
 
-// Main include file for Fredit core.
+#include "session-interface.h"
 
-namespace fredit { namespace core {
+#include <QList>
 
-enum OptionScope {
-  kDefaultScope,
-  kGlobalScope,
-  kLocalScope
-};
+#include "macros.h"
 
-enum OptionContext {
-  kNoneContext,
-  kSessionContext,
-  kBufferContext,
-  kViewContext
-};
+namespace fred { namespace core {
 
-enum OptionType {
-  kInvalidType,
-  kIntType,
-  kStringType,
-  kListType,
-  kBoolType,
-  kMapType,
-  kColorType
-};
+// Forward declarations.
+class Buffer;
+class View;
 
-enum MappingMode {
-  kNormalMode,
-  kCmdLineMode,
-  kVisualMode,
-  kPendingOpMode,
-  kInsertMode,
-};
+typedef QList<Buffer*> BufferList;
+typedef QList<View*> ViewList;
 
-enum SelectionType {
-  kAnySelection,
-  kSearchSelection,
-  kVisualSelection
-};
+class Session : public SessionInterface {
+ public:
+  static Session* GetInstance();
+  View* CreateBufferAndView();
+  View* CreateView(Buffer* buffer);
 
-enum IntervalType {
-  kBufferInterval,
-  kScreenInterval
-};
+ protected:
+  Session();
+  virtual ~Session();
 
-enum ClipboardMode {
-  kClipboardMode,
-  kSelectionMode
+  static void SetInstance(Session* instance);
+
+ private:
+  static Session* instance_;
+
+  DISALLOW_COPY_AND_ASSIGN(Session);
 };
 
 } } // end namespace.
 
-#endif // end of include guard: FRED_CORE_FREDIT_H_
+#endif // end of include guard: FRED_CORE_SESSION_H_

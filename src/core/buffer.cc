@@ -18,12 +18,29 @@
 
 #include "buffer.h"
 
+#include <glog/logging.h>
+
 namespace fred { namespace core {
 
-Buffer::Buffer() {
+Buffer::Buffer()
+    : buf_info_(new BufferInfo()) {
+  VLOG(1) << "Creating new buffer.";
 }
 
 Buffer::~Buffer() {
+  VLOG(1) << "Destroying buffer.";
+}
+
+void Buffer::LoadFile(const QString& filename) {
+  VLOG(1) << filename.toStdString();
+}
+
+void Buffer::AddView(View* view) {
+  if (buf_info_->views.contains(view)) {
+    LOG(WARNING) << "Attemping to add a view that was already added.";
+    return;
+  }
+  buf_info_->views.append(view);
 }
 
 } } // end namespace.
