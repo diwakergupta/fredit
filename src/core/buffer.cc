@@ -20,7 +20,7 @@
 
 #include <glog/logging.h>
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 Buffer::Buffer()
     : buf_info_(new BufferInfo()) {

@@ -18,7 +18,7 @@
 
 #include "core/font.h"
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 bool Font::IsBold() const {
   return weight_ > Normal;

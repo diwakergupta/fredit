@@ -19,7 +19,7 @@
 def build(bld):
   obj = bld.new_task_gen(
     features = ["cxx", "cprogram"],
-    uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE"],
+    uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE", "XDG_BASEDIR"],
     uselib_local = "fred",
     target = "nfred",
     includes = [".."])

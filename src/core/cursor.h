@@ -32,7 +32,7 @@
 #include <QPoint>
 #include <QString>
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 class Cursor : public QPoint {
  public:

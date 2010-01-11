@@ -16,29 +16,10 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "core/session.h"
-
-#include <glog/logging.h>
+#include "core/fredit.h"
 
 namespace fredit { namespace core {
 
-Session* Session::instance_ = NULL;
-
-Session::Session() {
-}
-
-Session::~Session() {
-}
-
-Session* Session::GetInstance() {
-  if (!instance_) {
-    LOG(ERROR) << "GetInstance has not been called.";
-  }
-  return instance_;
-}
-
-void Session::SetInstance(Session* instance) {
-  instance_ = instance;
-}
+const char* Constants::kAppName = "fredit";
 
 } } // end namespace.

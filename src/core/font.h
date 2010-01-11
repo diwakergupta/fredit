@@ -19,7 +19,7 @@
 #ifndef FRED_CORE_FONT_H_
 #define FRED_CORE_FONT_H_
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 class Font {
  public:

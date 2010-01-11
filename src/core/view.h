@@ -21,7 +21,7 @@
 
 #include "core/view-interface.h"
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 // Forward declarations.
 class Buffer;

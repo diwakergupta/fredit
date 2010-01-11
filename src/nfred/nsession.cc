@@ -20,7 +20,7 @@
 
 #include "core/buffer.h"
 
-namespace fred { namespace nfred {
+namespace fredit { namespace nfred {
 
 void NSession::CreateInstance() {
   static NSession instance;

@@ -23,7 +23,7 @@
 #include "core/session.h"
 #include "nfred/nview.h"
 
-namespace fred { namespace nfred {
+namespace fredit { namespace nfred {
 
 class NSession : public core::Session {
  public:

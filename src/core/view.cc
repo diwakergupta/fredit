@@ -22,7 +22,7 @@
 #include "core/buffer.h"
 #include "core/session.h"
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 View::View(Buffer* buffer, Session* session)
     : buffer_(buffer),

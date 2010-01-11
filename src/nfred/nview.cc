@@ -21,7 +21,7 @@
 #include "core/buffer.h"
 #include "nfred/nsession.h"
 
-namespace fred { namespace nfred {
+namespace fredit { namespace nfred {
 
 NView::NView(core::Buffer* buffer)
     : core::View(buffer, NSession::GetInstance()) {

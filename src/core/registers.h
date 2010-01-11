@@ -22,7 +22,7 @@
 #include <QStringList>
 #include <QMap>
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 class Registers {
  public:

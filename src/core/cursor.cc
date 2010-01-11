@@ -18,7 +18,7 @@
 
 #include "core/cursor.h"
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 bool Cursor::operator<(const Cursor& right) const {
   return (y() < right.y()) || (y() == right.y() && x() < right.x());

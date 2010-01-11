@@ -23,6 +23,11 @@
 
 namespace fredit { namespace core {
 
+class Constants {
+ public:
+  static const char* kAppName;
+};
+
 enum OptionScope {
   kDefaultScope,
   kGlobalScope,

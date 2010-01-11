@@ -25,7 +25,7 @@
 
 #include "core/macros.h"
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 // Forward declarations.
 class Buffer;

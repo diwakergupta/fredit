@@ -23,7 +23,7 @@
 
 #include "core/view.h"
 
-namespace fred { 
+namespace fredit {
 
 namespace core {
 class Buffer;

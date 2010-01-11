@@ -20,7 +20,7 @@
 
 #include <glog/logging.h>
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 void Registers::SetRegister(QChar reg_chr, const QStringList& value) {
   registers_[reg_chr] = value;

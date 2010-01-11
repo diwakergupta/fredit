@@ -22,7 +22,7 @@
 #include <QList>
 #include <QString>
 
-namespace fred { namespace core {
+namespace fredit { namespace core {
 
 // Forward declarations.
 class View;
