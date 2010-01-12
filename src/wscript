@@ -34,6 +34,11 @@ def configure(conf):
   conf.env.LIBPATH_GFLAGS = "/usr/lib"
   conf.env.CPPPATH_GFLAGS = "/usr/include"
 
+  # Configuration for googletest
+  conf.env.LIB_GTEST = "gtest"
+  conf.env.LIBPATH_GTEST = "/usr/lib"
+  conf.env.CPPPATH_GTEST = "/usr/include"
+
   # Configuration for Lua.
   conf.env.LIB_LUA = "lua5.1"
   conf.env.LIBPATH_LUA = "/usr/lib"

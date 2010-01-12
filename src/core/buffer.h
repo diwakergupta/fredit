@@ -21,11 +21,18 @@
 
 #include <QList>
 #include <QString>
+#include <QStringList>
+#include <QVector>
 
 namespace fredit { namespace core {
 
 // Forward declarations.
+class Cursor;
+class Line;
 class View;
+
+typedef QVector<Line*> BufferData;
+typedef QStringList RawData;
 
 // A Buffer is an in-memory representation of the contents of a file. Note that
 // the Buffer is only responsible for the content, and not the presentation --
@@ -37,6 +44,11 @@ class Buffer {
  public:
   Buffer();
   virtual ~Buffer();
+
+  // ===========================================================================
+  // Content operations.
+  // ===========================================================================
+  Cursor InsertData(const Cursor& position, const RawData& data);
 
   // ===========================================================================
   void LoadFile(const QString& filename);
