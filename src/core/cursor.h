@@ -48,9 +48,11 @@ class Cursor : public QPoint {
   // Aliases: "line" refers to the Y axis, "column" refers to the X axis.
   inline void set_line(int line) { setY(line); }
   inline int line() const { return y(); }
+
   inline void set_column(int column) { setX(column); }
   inline int column() const { return x(); }
-  inline int SetLineColumn(int line, int column) { SetXY(line, column); }
+
+  inline int SetLineColumn(int line, int column) { SetXY(column, line); }
 
   QString toString() const {
     return QString("(line, col) = (%1, %2)").arg(line()).arg(column());

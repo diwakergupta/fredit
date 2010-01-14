@@ -18,13 +18,38 @@
 
 #include "core/cursor.h"
 
+// qt.
+#include <QString>
+
+// google-test.
 #include <gtest/gtest.h>
 
 namespace core = fredit::core;
 
-TEST(CursorTest, BasicBehavior) {
+TEST(CursorTest, Construction) {
+  core::Cursor cursor;
+  cursor.SetXY(10, 10);
+  ASSERT_TRUE(cursor == core::Cursor(10, 10));
+}
+
+TEST(CursorTest, Comparators) {
   core::Cursor cursor1(10, 10), cursor2(10, 20), cursor3(20, 10);
+
   ASSERT_TRUE(cursor1 < cursor2);
   ASSERT_TRUE(cursor1 < cursor3);
   ASSERT_TRUE(cursor3 < cursor2);
+}
+
+TEST(CursorTest, API) {
+  core::Cursor cursor(2, 3);
+
+  ASSERT_TRUE(cursor.toString() == QString("(line, col) = (3, 2)"));
+
+  cursor.SetXY(3, 2);
+  ASSERT_EQ(cursor.line(), 2);
+  ASSERT_EQ(cursor.column(), 3);
+
+  cursor.SetLineColumn(3, 2);
+  ASSERT_EQ(cursor.line(), 3);
+  ASSERT_EQ(cursor.column(), 2);
 }
