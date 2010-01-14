@@ -31,7 +31,8 @@ def build(bld):
     "line.cc",
     "registers.cc",
     "session.cc",
-    "view.cc"
+    "view.cc",
+    "view-cursor.cc"
     ]
 
   libfred_test = bld.new_task_gen(
