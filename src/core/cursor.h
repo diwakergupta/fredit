@@ -38,6 +38,7 @@ class Cursor : public QPoint {
  public:
   Cursor(): QPoint(0, 0) {}
   Cursor(const QPoint& p): QPoint(p) {}
+  Cursor(int x, int y): QPoint(x, y) {}
 
   void SetXY(int x, int y) {
     setX(x);

@@ -41,5 +41,6 @@ def build(bld):
     target = "libfred-tests",
     includes = [".."])
   libfred_test.source = [
+    "cursor-test.cc",
     "main-test.cc"
     ]
