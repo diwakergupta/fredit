@@ -19,7 +19,7 @@
 #ifndef FRED_CORE_SESSION_H_
 #define FRED_CORE_SESSION_H_
 
-#include "core/session-interface.h"
+#include "core/session_interface.h"
 
 #include <QList>
 

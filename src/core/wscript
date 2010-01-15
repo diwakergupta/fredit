@@ -32,16 +32,16 @@ def build(bld):
     "registers.cc",
     "session.cc",
     "view.cc",
-    "view-cursor.cc"
+    "view_cursor.cc"
     ]
 
   libfred_test = bld.new_task_gen(
     features = ["cxx", "cprogram"],
     uselib = ["GFLAGS", "GLOG", "GTEST", "LUA", "QTCORE"],
     uselib_local = "fred",
-    target = "libfred-tests",
+    target = "libfred_tests",
     includes = [".."])
   libfred_test.source = [
-    "cursor-test.cc",
-    "main-test.cc"
+    "cursor_test.cc",
+    "main_test.cc"
     ]

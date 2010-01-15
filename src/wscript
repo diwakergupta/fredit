@@ -50,4 +50,4 @@ def configure(conf):
   conf.env.CPPPATH_XDG_BASEDIR = "/usr/include"
 
 def build(bld):
-  bld.add_subdirs("core core-runner nfred")
+  bld.add_subdirs("core core_runner nfred")
