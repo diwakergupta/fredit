@@ -29,6 +29,7 @@ def build(bld):
     "font.cc",
     "fredit.cc",
     "line.cc",
+    "region.cc",
     "registers.cc",
     "session.cc",
     "view.cc",
@@ -43,5 +44,6 @@ def build(bld):
     includes = [".."])
   libfred_test.source = [
     "cursor_test.cc",
-    "main_test.cc"
+    "main_test.cc",
+    "region_test.cc"
     ]
