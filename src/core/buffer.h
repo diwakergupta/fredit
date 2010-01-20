@@ -30,9 +30,7 @@ namespace fredit { namespace core {
 class Cursor;
 class Line;
 class View;
-
-typedef QVector<Line*> BufferData;
-typedef QStringList RawData;
+class Region;
 
 // A Buffer is an in-memory representation of the contents of a file. Note that
 // the Buffer is only responsible for the content, and not the presentation --
@@ -48,13 +46,19 @@ class Buffer {
   // ===========================================================================
   // Content operations.
   // ===========================================================================
-  Cursor InsertData(const Cursor& position, const RawData& data);
+  Cursor InsertData(const Cursor& cursor, const QStringList& data);
+  void DeleteRegion(const Region& region);
+  void Clear();
 
   // ===========================================================================
   void LoadFile(const QString& filename);
+  void SetPath(const QString& path);
 
   // ===========================================================================
   void AddView(View* view);
+
+  int GetLineCount() const;
+  Line* GetLineAt(int line_number);
 
   // ===========================================================================
   enum BufferState {
@@ -64,11 +68,10 @@ class Buffer {
   };
 
  private:
-  struct BufferInfo {
-    BufferInfo() {}
-    QList<View*> views;
-  };
-  BufferInfo* buf_info_;
+  // Forward declaration.
+  struct BufferInfo;
+
+  BufferInfo* bufinfo_;
 };
 
 } } // end namespace.
