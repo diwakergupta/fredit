@@ -36,8 +36,14 @@ namespace core = fredit::core;
 DECLARE_string(log_dir);
 
 int main(int argc, char** argv) {
+  // Allow other objects (such as QCoreApplication to reparse the command line).
+  // This is useful if the applicatione uses flags that are not known to
+  // gflags.
   google::AllowCommandLineReparsing();
-  google::ParseCommandLineFlags(&argc, &argv, true);
+
+  // Remove flags that are known to gflags.
+  bool remove_flags = true;
+  google::ParseCommandLineFlags(&argc, &argv, remove_flags);
 
   // Initialize the XDG handle.
   // TODO: XDG is not a cross-platform standard.

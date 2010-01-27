@@ -19,6 +19,9 @@
 #ifndef FRED_CORE_SESSION_INTERFACE_H_
 #define FRED_CORE_SESSION_INTERFACE_H_
 
+// This class declares the interface that each GUI front-end must implement. The
+// fredit core will use these methods as callbacks into the GUI.
+
 namespace fredit { namespace core {
 
 class SessionInterface {

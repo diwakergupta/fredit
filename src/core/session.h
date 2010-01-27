@@ -29,7 +29,9 @@ namespace fredit { namespace core {
 
 // Forward declarations.
 class Buffer;
+class Cursor;
 class View;
+class ViewCursor;
 
 typedef QList<Buffer*> BufferList;
 typedef QList<View*> ViewList;
@@ -37,8 +39,20 @@ typedef QList<View*> ViewList;
 class Session : public SessionInterface {
  public:
   static Session* GetInstance();
-  View* CreateBufferAndView();
-  View* CreateView(Buffer* buffer);
+  View* CreateBufferAndView(const QString& path);
+
+  // We assume that all the command line flags have already been parsed (either
+  // by gflags or QApplication etc).
+  void ParseCommandLineArgs();
+  void RemoveBuffer(Buffer* buf);
+  void DeleteBuffer(Buffer* buf);
+
+  const BufferList& buffers() const { return buffers_; }
+  Buffer* FindBuffer(const QString& path);
+  View* CreateView(Buffer* buf);
+  void DeleteView(View* view);
+  View* current_view() { return current_view_; }
+  void set_current_view(View* view);
 
  protected:
   Session();
@@ -46,8 +60,19 @@ class Session : public SessionInterface {
 
   static void SetInstance(Session* instance);
 
+  // Initialize the session.
+  void Init();
+
+  // TODO: move the log/config dir creation here.
+  void InitResources();
+
  private:
   static Session* instance_;
+
+  View* current_view_;
+  Buffer* current_buffer_;
+  BufferList buffers_;
+  ViewList views_;
 
   DISALLOW_COPY_AND_ASSIGN(Session);
 };
