@@ -1,6 +1,6 @@
 // Fredit: A fresh editor.
 
-// Copyright (C) 2010 Diwaker Gupta <diwaker@floatingsun.net>
+// Copyright (c) 2010 Diwaker Gupta <diwaker@floatingsun.net>
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -16,19 +16,22 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "core/view_cursor.h"
+#ifndef FREDIT_CORE_KEY_H_
+#define FREDIT_CORE_KEY_H_
+
+#include <Qt>
 
 namespace fredit { namespace core {
 
-ViewCursor::ViewCursor()
-    : cursor_(), position_(0) {
-}
+class Key {
+ public:
+  Key(int key, Qt::KeyboardModifiers modifiers);
 
-ViewCursor::ViewCursor(int line, int column, int position)
-    : cursor_(column, line), position_(position) {
-}
-
-ViewCursor::~ViewCursor() {
-}
+ private:
+  int key_;
+  Qt::KeyboardModifiers modifiers_;
+};
 
 } } // end namespace.
+
+#endif // end of include guard: FREDIT_CORE_KEY_EVENT_H_

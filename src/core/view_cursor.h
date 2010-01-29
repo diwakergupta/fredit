@@ -25,7 +25,7 @@
 // differ from the actual column position in the buffer (due to word-wrapping,
 // for instance), we additionally store the visible column position.
 
-#include "cursor.h"
+#include "core/cursor.h"
 
 namespace fredit { namespace core {
 

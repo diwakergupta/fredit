@@ -29,6 +29,7 @@ def build(bld):
     "font.cc",
     "fredit.cc",
     "line.cc",
+    "key.cc",
     "region.cc",
     "registers.cc",
     "session.cc",
