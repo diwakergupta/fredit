@@ -30,6 +30,7 @@ def build(bld):
     "fredit.cc",
     "line.cc",
     "key.cc",
+    "key_sequence.cc",
     "region.cc",
     "registers.cc",
     "session.cc",

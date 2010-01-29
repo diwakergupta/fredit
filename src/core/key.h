@@ -25,7 +25,12 @@ namespace fredit { namespace core {
 
 class Key {
  public:
+  Key();
   Key(int key, Qt::KeyboardModifiers modifiers);
+  Key(const Key&);
+
+  int key() const { return key_; }
+  Qt::KeyboardModifiers modifiers() const { return modifiers_; }
 
  private:
   int key_;

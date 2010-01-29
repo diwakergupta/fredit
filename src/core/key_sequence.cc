@@ -16,20 +16,13 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "core/key.h"
+#include "key_sequence.h"
 
 namespace fredit { namespace core {
 
-Key::Key()
-    : key_(Qt::Key_unknown), modifiers_(Qt::NoModifier) {
-    }
-
-Key::Key(int key, Qt::KeyboardModifiers modifiers)
-    : key_(key), modifiers_(modifiers) {
-}
-
-Key::Key(const Key& k)
-: key_(k.key()), modifiers_(k.modifiers()) {
+KeySequence::KeySequence(const Key& key) {
+  keys_ = new QVector<Key>();
+  keys_->append(key);
 }
 
 } } // end namespace.

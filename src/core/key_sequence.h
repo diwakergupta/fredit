@@ -16,20 +16,23 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#include "core/key.h"
+#ifndef FREDIT_CORE_KEY_SEQUENCE_H_
+#define FREDIT_CORE_KEY_SEQUENCE_H_
+
+#include <QVector>
+
+#include "key.h"
 
 namespace fredit { namespace core {
 
-Key::Key()
-    : key_(Qt::Key_unknown), modifiers_(Qt::NoModifier) {
-    }
+class KeySequence {
+ public:
+  KeySequence(const Key&);
 
-Key::Key(int key, Qt::KeyboardModifiers modifiers)
-    : key_(key), modifiers_(modifiers) {
-}
-
-Key::Key(const Key& k)
-: key_(k.key()), modifiers_(k.modifiers()) {
-}
+ private:
+  QVector<Key>* keys_;
+};
 
 } } // end namespace.
+
+#endif // end of include guard: FREDIT_CORE_KEY_SEQUENCE_H_
