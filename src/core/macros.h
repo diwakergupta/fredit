@@ -16,8 +16,8 @@
 // this program; if not, write to the Free Software Foundation, Inc., 51
 // Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_MACROS_H_
-#define FRED_CORE_MACROS_H_
+#ifndef FREDIT_CORE_MACROS_H_
+#define FREDIT_CORE_MACROS_H_
 
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
@@ -26,4 +26,4 @@
   TypeName(const TypeName&);               \
   void operator=(const TypeName&)
 
-#endif // end of include guard: FRED_CORE_MACROS_H_
+#endif // end of include guard: FREDIT_CORE_MACROS_H_

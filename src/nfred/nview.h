@@ -16,8 +16,8 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_NFRED_NVIEW_H_
-#define FRED_NFRED_NVIEW_H_
+#ifndef FREDIT_NFREDIT_NVIEW_H_
+#define FREDIT_NFREDIT_NVIEW_H_
 
 #include <ncurses.h>
 
@@ -41,4 +41,4 @@ class NView : public core::View {
 
 } } // end namespace.
 
-#endif // end of include guard: FRED_NFRED_NVIEW_H_
+#endif // end of include guard: FREDIT_NFREDIT_NVIEW_H_

@@ -18,8 +18,8 @@
 
 // A Region is simply a frament of the buffer bounded by two Cursor positions.
 
-#ifndef FRED_CORE_REGION_H_
-#define FRED_CORE_REGION_H_
+#ifndef FREDIT_CORE_REGION_H_
+#define FREDIT_CORE_REGION_H_
 
 #include <QString>
 #include <QRect>
@@ -63,4 +63,4 @@ class Region {
 
 } } 
 
-#endif // end of include guard: FRED_CORE_REGION_H_
+#endif // end of include guard: FREDIT_CORE_REGION_H_

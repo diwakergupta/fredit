@@ -16,8 +16,8 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FRED_CORE_FONT_H_
-#define FRED_CORE_FONT_H_
+#ifndef FREDIT_CORE_FONT_H_
+#define FREDIT_CORE_FONT_H_
 
 namespace fredit { namespace core {
 
@@ -64,4 +64,4 @@ class Font {
 
 } } // end namespace.
 
-#endif // end of include guard: FRED_CORE_FONT_H_
+#endif // end of include guard: FREDIT_CORE_FONT_H_
