@@ -19,8 +19,6 @@
 #ifndef FREDIT_NFREDIT_NVIEW_H_
 #define FREDIT_NFREDIT_NVIEW_H_
 
-#include <ncurses.h>
-
 #include "core/view.h"
 
 namespace fredit {

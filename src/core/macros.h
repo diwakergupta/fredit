@@ -19,11 +19,15 @@
 #ifndef FREDIT_CORE_MACROS_H_
 #define FREDIT_CORE_MACROS_H_
 
+namespace fredit { namespace core {
+
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
 // Courtesy: Google style guide.
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
   TypeName(const TypeName&);               \
   void operator=(const TypeName&)
+
+} } // end namespace.
 
 #endif // end of include guard: FREDIT_CORE_MACROS_H_

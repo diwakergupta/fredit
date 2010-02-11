@@ -21,6 +21,7 @@
 
 #include "core/session_interface.h"
 
+#include <QDir>
 #include <QList>
 
 #include "core/macros.h"
@@ -48,11 +49,15 @@ class Session : public SessionInterface {
   void DeleteBuffer(Buffer* buf);
 
   const BufferList& buffers() const { return buffers_; }
+
   Buffer* FindBuffer(const QString& path);
   View* CreateView(Buffer* buf);
   void DeleteView(View* view);
+
   View* current_view() { return current_view_; }
   void set_current_view(View* view);
+
+  const QDir& datadir() const { return *datadir_; }
 
  protected:
   Session();
@@ -68,6 +73,9 @@ class Session : public SessionInterface {
 
  private:
   static Session* instance_;
+
+  QDir* datadir_;
+  QDir* confdir_;
 
   View* current_view_;
   Buffer* current_buffer_;

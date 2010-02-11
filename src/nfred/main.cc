@@ -18,11 +18,11 @@
 
 #include <iostream>
 
-#include <basedir.h>
+#include <cwidget/toplevel.h>
+#include <cwidget/widgets/minibuf_win.h>
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
-#include <QCoreApplication>
 #include <QDir>
 #include <QString>
 
@@ -30,8 +30,9 @@
 #include "core/fredit.h"
 #include "nfred/nsession.h"
 
-namespace nfred = fredit::nfred;
 namespace core = fredit::core;
+namespace cw = cwidget;
+namespace nfred = fredit::nfred;
 
 DECLARE_string(log_dir);
 
@@ -45,43 +46,25 @@ int main(int argc, char** argv) {
   bool remove_flags = true;
   google::ParseCommandLineFlags(&argc, &argv, remove_flags);
 
-  // Initialize the XDG handle.
-  // TODO: XDG is not a cross-platform standard.
-  xdgHandle handle;
-  xdgInitHandle(&handle);
+  cw::toplevel::init();
 
-  // TODO: this should move out into a common function (or possibly into core).
-  // Setup our data, log and config directories.
-  QDir xdg_data_dir(QString(xdgDataHome(&handle)));
-  CHECK(xdg_data_dir.exists());
-  if (!xdg_data_dir.exists(core::Constants::kAppName))
-    CHECK(xdg_data_dir.mkdir(core::Constants::kAppName));
+  // Create the session.
+  nfred::NSession::CreateInstance();
 
-  QDir fredit_dir(QString("%1/%2").arg(xdg_data_dir.absolutePath(),
-                                       core::Constants::kAppName));
-  if (!fredit_dir.exists("logs"))
-    CHECK(fredit_dir.mkdir("logs"));
-
-  QDir xdg_config_dir(QString(xdgConfigHome(&handle)));
-  CHECK(xdg_config_dir.exists());
-  if (!xdg_config_dir.exists(core::Constants::kAppName))
-    CHECK(xdg_config_dir.mkdir(core::Constants::kAppName));
-
-  FLAGS_log_dir = fredit_dir.absoluteFilePath("logs").toStdString();
+  // Initialize logging.
+  core::Session* session = nfred::NSession::GetInstance();
+  FLAGS_log_dir = session->datadir().absoluteFilePath("logs").toStdString();
   google::InitGoogleLogging(argv[0]);
 
   LOG(INFO) << "Starting nfred.";
 
-  QCoreApplication* app = new QCoreApplication(argc, argv);
-  app->setOrganizationName("fred");
-  app->setOrganizationDomain("fredit.org");
-  app->setApplicationName("nfred");
+  try {
+    cw::toplevel::mainloop();
+  } catch (...) {
+    cw::toplevel::shutdown();
+    return 0;
+  }
 
-  nfred::NSession::CreateInstance();
-
-  // QTimer::singleShot(0, 
-    // static_cast<nfred::NSession*>(core::Session::GetInstance()),
-    // SLOT(FrontendGuiReady()));
-
-  return app->exec();
+  cw::toplevel::shutdown();
+  return 0;
 }

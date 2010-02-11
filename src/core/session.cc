@@ -18,7 +18,10 @@
 
 #include "core/session.h"
 
+#include <basedir.h>
 #include <glog/logging.h>
+
+#include <core/fredit.h>
 
 namespace fredit { namespace core {
 
@@ -27,7 +30,38 @@ SessionInterface::~SessionInterface() {
 
 Session* Session::instance_ = NULL;
 
-Session::Session() {
+void Session::Init() {
+  InitResources();
+}
+
+void Session::InitResources() {
+  // Initialize the XDG handle.
+  // TODO: XDG is not a cross-platform standard.
+  xdgHandle handle;
+  xdgInitHandle(&handle);
+
+  // Setup our data, log and config directories.
+  QDir xdg_data_dir(QString(xdgDataHome(&handle)));
+  CHECK(xdg_data_dir.exists());
+  if (!xdg_data_dir.exists(Constants::kAppName))
+    CHECK(xdg_data_dir.mkdir(Constants::kAppName));
+
+  datadir_ = new QDir(QString("%1/%2").arg(xdg_data_dir.absolutePath(),
+                                           Constants::kAppName));
+  if (!datadir_->exists("logs"))
+    CHECK(datadir_->mkdir("logs"));
+
+  QDir xdg_config_dir(QString(xdgConfigHome(&handle)));
+  CHECK(xdg_config_dir.exists());
+  if (!xdg_config_dir.exists(Constants::kAppName))
+    CHECK(xdg_config_dir.mkdir(Constants::kAppName));
+  confdir_ = new QDir(QString("%1/%2").arg(xdg_config_dir.absolutePath(),
+                                          Constants::kAppName));
+}
+
+Session::Session()
+  : datadir_(NULL), confdir_(NULL) {
+  Init();
 }
 
 Session::~Session() {

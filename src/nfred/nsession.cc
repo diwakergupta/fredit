@@ -16,6 +16,12 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
+// NOTE: ideally, the first include file should be the primary include
+// (nsession.h). However, cwidget refuses to compile if it is included after any
+// fredit includes. This is a workaround and must be fixed once the root cause
+// has been found.
+#include <cwidget/toplevel.h>
+
 #include "nfred/nsession.h"
 
 #include "core/buffer.h"
