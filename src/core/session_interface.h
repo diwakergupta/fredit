@@ -19,14 +19,29 @@
 #ifndef FREDIT_CORE_SESSION_INTERFACE_H_
 #define FREDIT_CORE_SESSION_INTERFACE_H_
 
+#include <QString>
+
 // This class declares the interface that each GUI front-end must implement. The
 // fredit core will use these methods as callbacks into the GUI.
 
 namespace fredit { namespace core {
 
+class Buffer;
+class View;
+
 class SessionInterface {
  public:
-  virtual ~SessionInterface() {}
+  virtual void GuiPopupMessage(const QString& msg) = 0;
+
+  virtual void GuiQuit(int error_code) = 0;
+
+  virtual View* GuiCreateView(Buffer* buf) = 0;
+  virtual void GuiChangeView(View* view) = 0;
+  virtual void GuiDeleteView(View* view) = 0;
+  virtual void GuiCreateBuffer(Buffer* buf) = 0;
+  virtual void GuiRemoveBuffer(Buffer* buf) = 0;
+
+  virtual ~SessionInterface();
 };
 
 } } // end namespace.

@@ -22,6 +22,9 @@
 
 namespace fredit { namespace core {
 
+SessionInterface::~SessionInterface() {
+}
+
 Session* Session::instance_ = NULL;
 
 Session::Session() {

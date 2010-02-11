@@ -16,6 +16,9 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
+def configure(conf):
+  pass
+
 def build(bld):
   libfred = bld.new_task_gen(
     features=["qt4", "cxx", "cstaticlib"],

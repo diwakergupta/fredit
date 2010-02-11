@@ -33,4 +33,25 @@ NSession::NSession() : core::Session() {
 NSession::~NSession() {
 }
 
+void NSession::GuiPopupMessage(const QString& msg) {
+}
+
+void NSession::GuiQuit(int error_code) {
+}
+
+core::View* NSession::GuiCreateView(core::Buffer* buf) {
+}
+
+void NSession::GuiChangeView(core::View* view) {
+}
+
+void NSession::GuiDeleteView(core::View* view) {
+}
+
+void NSession::GuiCreateBuffer(core::Buffer* buf) {
+}
+
+void NSession::GuiRemoveBuffer(core::Buffer* buf) {
+}
+
 } } // end namespace.

@@ -40,14 +40,10 @@ def configure(conf):
   conf.env.CPPPATH_GTEST = "/usr/include"
 
   # Configuration for Lua.
-  conf.env.LIB_LUA = "lua5.1"
-  conf.env.LIBPATH_LUA = "/usr/lib"
-  conf.env.CPPPATH_LUA = "/usr/include/lua5.1"
+  conf.check_cfg(package = "lua5.1", args = "--cflags --libs",
+                 uselib_store = "LUA")
 
-  # Configuration for libxdg-basedir
-  conf.env.LIB_XDG_BASEDIR = "xdg-basedir"
-  conf.env.LIBPATH_XDG_BASEDIR = "/usr/lib"
-  conf.env.CPPPATH_XDG_BASEDIR = "/usr/include"
+  conf.sub_config("core nfred")
 
 def build(bld):
   bld.add_subdirs("core core_runner nfred")

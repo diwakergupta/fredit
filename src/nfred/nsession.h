@@ -29,6 +29,17 @@ class NSession : public core::Session {
  public:
   static void CreateInstance();
 
+  // === session_interface ===
+  virtual void GuiPopupMessage(const QString& msg);
+
+  virtual void GuiQuit(int error_code);
+
+  virtual core::View* GuiCreateView(core::Buffer* buf);
+  virtual void GuiChangeView(core::View* view);
+  virtual void GuiDeleteView(core::View* view);
+  virtual void GuiCreateBuffer(core::Buffer* buf);
+  virtual void GuiRemoveBuffer(core::Buffer* buf);
+
  private:
   NSession();
   virtual ~NSession();

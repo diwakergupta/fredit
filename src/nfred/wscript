@@ -16,10 +16,18 @@
 # this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
+def configure(conf):
+  conf.check_cfg(package = "libxdg-basedir",
+                 args = "--cflags --libs",
+                 uselib_store = "XDG_BASEDIR")
+  conf.check_cfg(package = "cwidget",
+                 args = "--cflags --libs",
+                 uselib_store = "CWIDGET")
+
 def build(bld):
   obj = bld.new_task_gen(
     features = ["cxx", "cprogram"],
-    uselib = ["GFLAGS", "GLOG", "LUA", "QTCORE", "XDG_BASEDIR"],
+    uselib = ["CWIDGET", "GFLAGS", "GLOG", "LUA", "QTCORE", "XDG_BASEDIR"],
     uselib_local = "fred",
     target = "nfred",
     includes = [".."])
