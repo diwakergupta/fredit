@@ -16,34 +16,35 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-def set_options(opt):
-  opt.tool_options("qt4")
+def set_options(ctx):
+  ctx.tool_options('qt4')
+  ctx.tool_options('compiler_cxx')
 
-def configure(conf):
-  conf.check_tool("g++")
-  conf.check_tool("qt4")
-  conf.env.append_value("CXXFLAGS", "-g -DQT_CORE_LIB -DQT_SHARED".split())
+def configure(ctx):
+  ctx.check_tool('compiler_cxx')
+  ctx.check_tool('qt4')
+  ctx.env.append_value('CXXFLAGS', '-g -DQT_CORE_LIB -DQT_SHARED'.split())
 
   # Configuration for google-glog.
-  conf.env.LIB_GLOG = "glog"
-  conf.env.LIBPATH_GLOG = "/usr/lib"
-  conf.env.CPPPATH_GLOG = "/usr/include"
+  ctx.env.LIB_GLOG = 'glog'
+  ctx.env.LIBPATH_GLOG = '/usr/lib'
+  ctx.env.CPPPATH_GLOG = '/usr/include'
 
   # Configuration for google-gflags.
-  conf.env.LIB_GFLAGS = "gflags"
-  conf.env.LIBPATH_GFLAGS = "/usr/lib"
-  conf.env.CPPPATH_GFLAGS = "/usr/include"
+  ctx.env.LIB_GFLAGS = 'gflags'
+  ctx.env.LIBPATH_GFLAGS = '/usr/lib'
+  ctx.env.CPPPATH_GFLAGS = '/usr/include'
 
   # Configuration for googletest
-  conf.env.LIB_GTEST = "gtest"
-  conf.env.LIBPATH_GTEST = "/usr/lib"
-  conf.env.CPPPATH_GTEST = "/usr/include"
+  ctx.env.LIB_GTEST = 'gtest'
+  ctx.env.LIBPATH_GTEST = '/usr/lib'
+  ctx.env.CPPPATH_GTEST = '/usr/include'
 
   # Configuration for Lua.
-  conf.check_cfg(package = "lua5.1", args = "--cflags --libs",
-                 uselib_store = "LUA")
+  ctx.check_cfg(package = 'lua5.1', args = '--cflags --libs',
+                uselib_store = 'LUA')
 
-  conf.sub_config("core nfred")
+  ctx.recurse('core nfred')
 
-def build(bld):
-  bld.add_subdirs("core core_runner nfred")
+def build(ctx):
+  ctx.recurse('core core_runner nfred')

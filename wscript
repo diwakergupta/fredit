@@ -16,14 +16,14 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-srcdir = "."
-blddir = "build"
+top = "."
+out = "build"
 
-def set_options(opt):
-  opt.sub_options("src")
+def set_options(ctx):
+  ctx.recurse("src")
 
-def configure(conf):
-  conf.sub_config("src")
+def configure(ctx):
+  ctx.recurse("src")
 
-def build(bld):
-  bld.add_subdirs("src")
+def build(ctx):
+  ctx.recurse("src")

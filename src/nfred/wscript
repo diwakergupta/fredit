@@ -16,17 +16,17 @@
 # this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-def configure(conf):
-  conf.check_cfg(package = "libxdg-basedir",
-                 args = "--cflags --libs",
-                 uselib_store = "XDG_BASEDIR")
+def configure(ctx):
+  ctx.check_cfg(package = 'libxdg-basedir',
+                args = '--cflags --libs',
+                uselib_store = 'XDG_BASEDIR')
 
-def build(bld):
-  obj = bld.new_task_gen(
-    features = ["cxx", "cprogram"],
-    uselib = ["CWIDGET", "GFLAGS", "GLOG", "LUA", "QTCORE"],
-    uselib_local = "fred",
-    target = "nfred",
-    includes = [".."])
+def build(ctx):
+  obj = ctx.new_task_gen(
+    features = ['cxx', 'cprogram'],
+    uselib = ['CWIDGET', 'GFLAGS', 'GLOG', 'LUA', 'QTCORE'],
+    uselib_local = 'fred',
+    target = 'nfred',
+    includes = ['..'])
 
-  obj.find_sources_in_dirs(".")
+  obj.find_sources_in_dirs('.')
