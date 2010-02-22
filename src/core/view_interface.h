@@ -19,12 +19,31 @@
 #ifndef FREDIT_CORE_VIEW_INTERFACE_H_
 #define FREDIT_CORE_VIEW_INTERFACE_H_
 
+#include <QString>
+
 namespace fredit { namespace core {
 
 class ViewInterface {
  public:
   ViewInterface() {}
   virtual ~ViewInterface() {}
+
+  virtual bool GuiPopupFileSaveAs() = 0;
+  virtual void GuiUpdateCursorPosition() = 0;
+  virtual void GuiUpdateFileName() {}
+  virtual void GuiUpdateMode() = 0;
+  virtual void GuiUpdateFileInfo() {}
+  virtual void GuiDisplayInfo(const QString&) {}
+  virtual void GuiScroll(int x, int y) = 0;
+  virtual QString GuiGetCommandLine() const = 0;
+  virtual void GuiSetCommandLine(const QString&) = 0;
+  virtual void GuiSetFocusCommandLine() = 0;
+  virtual void GuiSetFocusMainWindow() = 0;
+
+  virtual void GuiSetup() = 0;
+  virtual void GuiPreparePaintEvent() = 0;
+  virtual void GuiEndPaintEvent() = 0;
+
 };
 
 } } // end namespace.
