@@ -16,11 +16,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
+import os
+
 def set_options(ctx):
   ctx.tool_options('qt4')
   ctx.tool_options('compiler_cxx')
 
 def configure(ctx):
+  ctx.env.SRCDIR = os.path.join(ctx.env.TOP, "src")
+
   ctx.check_tool('compiler_cxx')
   ctx.check_tool('qt4')
   ctx.env.append_value('CXXFLAGS', '-g -DQT_CORE_LIB -DQT_SHARED'.split())

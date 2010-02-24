@@ -16,14 +16,17 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-top = "."
-out = "build"
+import os
+
+top = '.'
+out = 'build'
 
 def set_options(ctx):
-  ctx.recurse("src")
+  ctx.recurse('src')
 
 def configure(ctx):
-  ctx.recurse("src")
+  ctx.env.TOP = os.path.abspath(top)
+  ctx.recurse('src')
 
 def build(ctx):
-  ctx.recurse("src")
+  ctx.recurse('src')

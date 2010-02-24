@@ -27,6 +27,6 @@ def build(ctx):
     uselib = ['CWIDGET', 'GFLAGS', 'GLOG', 'LUA', 'QTCORE'],
     uselib_local = 'fred',
     target = 'nfred',
-    includes = ['..'])
+    includes = [ctx.env.SRCDIR])
 
   obj.find_sources_in_dirs('.')
