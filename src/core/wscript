@@ -30,6 +30,7 @@ def build(ctx):
 
   libfred.source = [
     'buffer.cc',
+    'color.cc',
     'cursor.cc',
     'draw_buffer.cc',
     'font.cc',
