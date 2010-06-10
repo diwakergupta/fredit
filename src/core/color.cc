@@ -27,4 +27,11 @@ Color::Color(int red, int green, int blue)
     : red_(red), green_(green), blue_(blue), isvalid_(true) {
 }
 
+bool Color::Equals(const Color& other) const {
+  return (isvalid_ == other.isvalid_ &&
+          red_ == other.red_ &&
+          green_ == other.green_ &&
+          blue_ == other.blue_);
+}
+
 } } // end namespace.

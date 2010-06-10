@@ -15,28 +15,44 @@
 // this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-#ifndef FREDIT_CORE_COLOR_H_
-#define FREDIT_CORE_COLOR_H_
+#include "draw_line.h"
 
 namespace fredit { namespace core {
 
-// The Color class encapsulates Fredit's notion of a color, for syntax
-// highlighting and such. A Color is simply an RGB triplet.
+DrawLine::DrawLine() : QList<DrawCell>() {
+  Clear();
+}
 
-class Color {
- public:
-  Color();
-  Color(int red, int green, int blue);
-  bool Equals(const Color& other) const;
+DrawLine::~DrawLine() {
+}
 
- private:
-  int red_;
-  int green_;
-  int blue_;
+void DrawLine::Clear() {
+  QList<DrawCell>::clear();
+  current_cell_.Clear();
+  working_cell_ = NULL;
+  width_ = 0;
+  changed_ = true;
+}
 
-  bool isvalid_;
-};
+void DrawLine::SetFont(const Font& font) {
+  current_cell_.set_font(font);
+}
+
+void DrawLine::SetForegroundColor(const Color& color) {
+  if (!current_cell_.foreground_color().Equals(color)) {
+    current_cell_.set_foreground_color(color);
+    changed_ = true;
+  }
+}
+
+void DrawLine::SetBackgroundColor(const Color& color) {
+  if (!current_cell_.background_color().Equals(color)) {
+    current_cell_.set_background_color(color);
+    changed_ = true;
+  }
+}
+
+void DrawLine::Flush() {
+}
 
 } } // end namespace.
-
-#endif // end of include guard: FREDIT_CORE_COLOR_H_

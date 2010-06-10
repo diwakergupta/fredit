@@ -34,6 +34,7 @@ def build(ctx):
     'cursor.cc',
     'draw_cell.cc',
     'draw_buffer.cc',
+    'draw_line.cc',
     'font.cc',
     'fredit.cc',
     'line.cc',
