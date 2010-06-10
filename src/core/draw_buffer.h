@@ -34,18 +34,44 @@
 // |         |                     |   | | |           line 2.
 // ...
 
+#include <QList>
+
+#include "core/cursor.h"
+#include "core/draw_cell.h"
+
 namespace fredit { namespace core {
 
 // Forward declarations.
-class Cursor;
-class DrawCell;
 class View;
 
 class DrawBuffer {
  public:
   DrawBuffer(const View* view, int columns, int height);
 
+  // Returns the buffer line number corresponding to the screen top line.
+  int ScreenTopBufferLine() const;
+
+  int ScreenBottomBufferLine() const;
+
+  void SetScreenSize(int columns, int lines);
+
+  inline int screen_height() const { return screen_height_; }
+  inline int screen_width() const { return screen_width_; }
+  inline int first_buffer_line() const { return first_buffer_line_; }
+
+  // inline const QList<DrawSection> content() { return content_; }
+
  private:
+  // QList<DrawSection> content_;
+  // QList<DrawLineLock> locks_;
+  Cursor screen_offset_;
+  DrawCell eol_cell_;
+
+  int screen_width_;
+  int screen_height_;
+  int first_buffer_line_;
+  int screen_top_buffer_line_;
+
   const View* view_;
 };
 
