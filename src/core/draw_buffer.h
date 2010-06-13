@@ -42,7 +42,11 @@
 namespace fredit { namespace core {
 
 // Forward declarations.
+class DrawLine;
+class Region;
 class View;
+
+typedef QList<DrawLine> DrawSection;
 
 class DrawBuffer {
  public:
@@ -59,10 +63,26 @@ class DrawBuffer {
   inline int screen_width() const { return screen_width_; }
   inline int first_buffer_line() const { return first_buffer_line_; }
 
-  // inline const QList<DrawSection> content() { return content_; }
+  inline const QList<DrawSection> content() { return content_; }
+
+  // Return the index of the last in-memory line in the buffer.
+  int GetLastBufferLine() const;
+
+  // Compute current height used by lines on screen.
+  int GetCurrentHeight() const;
+
+  // Sets the draw sections corresponding to the buffer line buffer_line.
+  // Returns the part of the buffer affected by the change.
+  // TODO(diwaker): Change to pass in Region by ref, instead of returning it.
+  Region SetDrawSectionForLine(int buffer_line, DrawSection section);
+
+  // Remove the specified line from the buffer.
+  // Return the region affected by the change.
+  // TODO(diwaker): Use output params.
+  Region DeleteLine(int buffer_line);
 
  private:
-  // QList<DrawSection> content_;
+  QList<DrawSection> content_;
   // QList<DrawLineLock> locks_;
   Cursor screen_offset_;
   DrawCell eol_cell_;
